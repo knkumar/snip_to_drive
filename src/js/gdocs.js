@@ -1,4 +1,5 @@
-localStorage['createResumableLink'] = '';
+if(localStorage['createResumableLink'] == undefined)
+	localStorage['createResumableLink'] = '';
 var doc_uri = '';
 
 
@@ -91,7 +92,7 @@ function addDocCollectionHandler(xhr){
 }
 
 function addDocCollection(){
-    if( doc_uri != '' || localStorage['collection_id'] != '') {
+    if( doc_uri != '' && localStorage['collection_id'] != '') {
 	var atom = ["<?xml version='1.0' encoding='UTF-8'?>", 
 		    '<entry xmlns="http://www.w3.org/2005/Atom">',
 		    '<id>'+doc_uri+'</id>',

@@ -6,8 +6,8 @@
 var DOCLIST_SCOPE = 'https://docs.google.com/feeds';
 var DOCLIST_FEED = DOCLIST_SCOPE + '/default/private/full/';
 
-
-localStorage['collection_id'] = '';
+if (localStorage['collection_id'] == undefined)
+	localStorage['collection_id'] = '';
 var collectionName = 'snipped_from_chrome';
 
 
