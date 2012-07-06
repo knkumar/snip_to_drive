@@ -1,0 +1,31 @@
+{
+    "name": "Snip to drive",
+    "version": "0.0.21",
+    "manifest_version": 2,
+    "description": "Snip chrome to drive.",
+    "browser_action": {
+	"default_icon": "icon.png",
+	"default_popup": "popup.html"
+    },
+    "content_scripts": [
+	{
+	    "matches": ["http://www.google.com/robots.txt*"],
+	    "js": ["oauth2/oauth2_inject.js"],
+	    "run_at": "document_start"	    
+	},
+	{	
+	    "matches": ["http://*/*"],
+    	    "js" : ["js/oncopy.js"]
+	}
+    ],
+    "permissions": [
+	"tabs",
+	"clipboardRead",
+	"http://*/*", 
+	"https://*/*",
+	"https://docs.google.com/feeds/*",
+	"https://accounts.google.com/o/oauth2/token",
+	"https://accounts.google.com/o/oauth2/token",
+	"https://www.googleapis.com/"	
+    ]   
+}					
