@@ -1,6 +1,6 @@
 {
     "name": "Snip to drive",
-    "version": "0.0.21",
+    "version": "0.0.22",
     "manifest_version": 2,
     "description": "Snip chrome to drive.",
     "icons":{
@@ -24,6 +24,7 @@
     "permissions": [
 	"tabs",
 	"clipboardRead",
+	"clipboardWrite",
 	"http://*/*", 
 	"https://*/*",
 	"https://docs.google.com/feeds/*",

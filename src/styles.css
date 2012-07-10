@@ -1,18 +1,28 @@
 .selected {
-    diaply: block;
+    display: block;
     text-align: left;
     padding: 10px;
+    background-color: white;
+    border-radius: 10px
 }
 
 body {
     min-width:357px;
     overflow-x:hidden;
+    background-color: #A0A0A0;
+    opacity: 0.8;
 }
 
-img {
-    margin:5px;
-    border:2px solid black;
-    vertical-align:middle;
-    width:75px;
-    height:75px;
+.snip-header {
+    display: block;
+    border-style: thin;
+    border-radius: 10px;
+    opacity: 0.9;
+    padding: 2px;
 }
+
+.snip-drive-container {
+    padding: 10px;
+}
+
+
