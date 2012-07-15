@@ -26,4 +26,41 @@ body {
 }
 
 #snip-content{
+    background-color: white;
+}
+
+.button {
+    color: white;
+    border: solid;
+    border-width: 1px;
+    border-color: DarkSlateBlue;
+    background: transparent url(icons/up.png) repeat scroll 0% 50%;
+    width: 60px;
+    -moz-box-shadow: 2px 2px 3px #666;
+    -webkit-box-shadow: 2px 2px 3px #666;
+    box-shadow: 2px 2px 3px #666;
+    /*-moz-border-radius: 10px;
+    border-radius: 10px;*/
+    height: 30px;
+}
+.button:hover {
+    color: black;
+    border: solid;
+    border-width: 1px;
+    border-color: DarkSlateBlue;
+    background: transparent url(icons/down.png) repeat scroll 0% 50%;
+    width: 60px;
+    height: 30px;
+    /*-moz-border-radius: 10px;
+    border-radius: 10px;*/
+}
+
+
+input.text {
+    width: 240px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    padding: 4px 7px;
+    outline: 0;
+    -webkit-appearance: none;
 }

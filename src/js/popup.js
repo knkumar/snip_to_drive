@@ -42,7 +42,7 @@ function getURL(callback) {
  **  publish date: 06/17/2012
  **  Version: 0.0.1
  **/
-function dispSelection(text) {
+function dispSelection(text, title) {
     var div = document.createElement('div');
     div.setAttribute('class', 'selected');
     div.setAttribute('id', 'selected');
@@ -51,9 +51,9 @@ function dispSelection(text) {
     var p = document.createElement('p');
     p.setAttribute('id','snip-content');
     p = setStyleUrl(p);
-
     div.insertBefore(p, div.firstChild);
     document.body.appendChild(div);
+    $('#docs-title').val(title);
 }
 
 function setStyleUrl(element){
@@ -94,7 +94,7 @@ function getSelection () {
 	chrome.tabs.sendRequest (tab.id, {method: "getSelection"}, function(response){
 	    console.log(tab.id);
 	    console.log(response);
-	    dispSelection(response.urlData);
+	    dispSelection(response.urlData, tab.title);
 	});
     });
 }
