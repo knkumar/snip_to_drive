@@ -18,8 +18,14 @@ function getSelectionHTML() {
         // W3C Ranges
         userSelection = window.getSelection();
         var range = document.createRange();
-        range.setStart(userSelection.anchorNode, userSelection.anchorOffset);
-        range.setEnd(userSelection.focusNode, userSelection.focusOffset);
+	if (userSelection.anchorOffset <= userSelection.focusOffset)  {
+            range.setStart(userSelection.anchorNode, userSelection.anchorOffset);
+            range.setEnd(userSelection.focusNode, userSelection.focusOffset);
+	}
+	else {
+	    range.setEnd(userSelection.anchorNode, userSelection.anchorOffset);
+            range.setStart(userSelection.focusNode, userSelection.focusOffset);
+	}
         var clonedSelection = range.cloneContents ();
         var div = document.createElement ('div');
         div.appendChild (clonedSelection);
