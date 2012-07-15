@@ -44,7 +44,7 @@ function createCollection(docId){
 	'URI' : DOCLIST_FEED,
 	'contentType' : 'application/atom+xml',
 	'body' : atom,
-	'onReadyHandler' : funHandler
+	'onReadyHandler' : createCollectionHandler
     }
     makeRequest(request);
 }
