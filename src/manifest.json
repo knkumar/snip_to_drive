@@ -1,14 +1,17 @@
 {
     "name": "Snip to drive",
-    "version": "0.0.22",
+    "version": "2012.7.1621",
     "manifest_version": 2,
     "description": "Snip chrome to drive.",
     "icons":{
-	    "128" : "icons/icon.png"
+	"128" : "icons/icon.png"
     },
     "browser_action": {
-		"default_icon" : "icons/icon.png",
-		"default_popup" : "popup.html"
+	"default_icon" : "icons/icon.png",
+	"default_popup" : "popup.html"
+    },
+    "background": {
+	"page": "background.html"
     },
     "content_scripts": [
 	{
@@ -18,18 +21,16 @@
 	},
 	{	
 	    "matches": ["http://*/*"],
-    	    "js" : ["js/oncopy.js"]
+    	    "js" : ["js/oncopy.js"],
+	    "run_at" : "document_start"
 	}
     ],
     "permissions": [
 	"tabs",
-	"clipboardRead",
-	"clipboardWrite",
 	"http://*/*", 
-	"https://*/*",
 	"https://docs.google.com/feeds/*",
 	"https://accounts.google.com/o/oauth2/token",
-	"https://accounts.google.com/o/oauth2/token",
-	"https://www.googleapis.com/"	
+	"https://www.googleapis.com/",
+	"unlimitedStorage"
     ]   
 }					

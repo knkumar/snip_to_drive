@@ -2,27 +2,28 @@
     display: block;
     text-align: left;
     padding: 10px;
-    background-color: white;
-    border-radius: 10px
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    border-radius: 10px;
 }
 
 body {
     min-width:357px;
     overflow-x:hidden;
-    background-color: #A0A0A0;
+    background-color: white;
     opacity: 0.8;
 }
 
 .snip-header {
     display: block;
-    border-style: thin;
-    border-radius: 10px;
     opacity: 0.9;
     padding: 2px;
 }
 
 .snip-drive-container {
-    padding: 10px;
+    padding: 0px;
 }
 
-
+#snip-content{
+}

@@ -2,9 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-$(document).ready(getSelection);
 
+$(document).ready(getSelection);
 google.authorize(checkAuthorized);
+//getSelection();
 
 /**
  **  The callback for authorize - fetches the resumable media link and checks for the collection "snipped from chrome"
@@ -36,21 +37,6 @@ function getURL(callback) {
 }
 
 /**
- **  Function gets the selected text from chrome.tabs in background.html
- **  called_by: document.ready
- **  publish date: 06/17/2012
- **  Version: 0.0.1
- **/
-function getSelection () {
-    chrome.tabs.getSelected (null, function(tab) {
-	chrome.tabs.sendRequest (tab.id, {method: "getSelection"}, function(response){
-	    dispSelection(response.data);
-	});
-    });
-}
-
-
-/**
  **	 Function creates the child with the selected text in popup.html
  **  called_by: get_selection
  **  publish date: 06/17/2012
@@ -64,18 +50,51 @@ function dispSelection(text) {
     div.innerHTML = text;
     var p = document.createElement('p');
     p.setAttribute('id','snip-content');
-    //div.appendChild(txt);
+    p = setStyleUrl(p);
+
+    div.insertBefore(p, div.firstChild);
+    document.body.appendChild(div);
+}
+
+function setStyleUrl(element){
+    element.style.backgroundColor = "gainsboro";
+    element.style.padding = "10px";
     var a = document.createElement('a');
+    a.setAttribute('class', 'url');
     a.title = "URL";
     getURL(function (URL) {
 	a.innerHTML = URL;
 	a.href = URL;
     });    
-    p.appendChild(a)
-    div.insertBefore(p, div.firstChild);
-    document.body.appendChild(div);
+    element.appendChild(a);
+    return element;
 }
 
 function format_links(text) {
 
+}
+
+
+/**
+ **  Function gets the selected text from chrome.tabs in background.html
+ **  called_by: document.ready
+ **  publish date: 06/17/2012
+ **  Version: 0.0.1
+ **/
+/*chrome.tabs.getSelected (null, function(tab) {
+    chrome.tabs.sendRequest (tab.id, {method: "getSelection"}, function(response){
+	console.log(tab.id);
+	console.log(response);
+	dispSelection(response.data);
+    });
+});*/
+
+function getSelection () {
+    chrome.tabs.getSelected (null, function(tab) {
+	chrome.tabs.sendRequest (tab.id, {method: "getSelection"}, function(response){
+	    console.log(tab.id);
+	    console.log(response);
+	    dispSelection(response.urlData);
+	});
+    });
 }

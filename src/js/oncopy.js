@@ -5,24 +5,21 @@
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
     if (request.method == "getSelection") {
-	var selection = getSelectionHTML();
-	//alert("selection: "+selection);
-	sendResponse({ data: selection? selection : document.execCommand('paste'); });
+	var select = getSelectionHTML();
+	sendResponse({ urlData: select });
     }
     else
-      sendResponse({}); // snub them.
+	sendResponse({});
 });
-
 
 function getSelectionHTML() {
     var userSelection;
     if (window.getSelection) {
-                // W3C Ranges
-        userSelection = window.getSelection ();
-        var range = document.createRange ();
-        range.setStart (userSelection.anchorNode, userSelection.anchorOffset);
-        range.setEnd (userSelection.focusNode, userSelection.focusOffset);
-
+        // W3C Ranges
+        userSelection = window.getSelection();
+        var range = document.createRange();
+        range.setStart(userSelection.anchorNode, userSelection.anchorOffset);
+        range.setEnd(userSelection.focusNode, userSelection.focusOffset);
         var clonedSelection = range.cloneContents ();
         var div = document.createElement ('div');
         div.appendChild (clonedSelection);
@@ -32,11 +29,11 @@ function getSelectionHTML() {
 	return userSelection;
     }  
     else if (document.selection) {
-                // Explorer selection, return the HTML
+        // Explorer selection, return the HTML
         userSelection = document.selection.createRange ();
         return userSelection;
     } else {
-        return '';
+        return 'failed';
     }
 }
 
