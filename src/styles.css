@@ -64,3 +64,18 @@ input.text {
     outline: 0;
     -webkit-appearance: none;
 }
+
+#why{
+    width : 240px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    padding: 4px 7px;
+    outline: 0;
+    -webkit-appearance: none;
+    height : 60px;
+}
+
+.comment{
+    padding: 10px;
+    
+}

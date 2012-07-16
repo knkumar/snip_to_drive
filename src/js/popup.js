@@ -52,8 +52,9 @@ function dispSelection(text, title) {
     p.setAttribute('id','snip-content');
     p = setStyleUrl(p);
     div.insertBefore(p, div.firstChild);
-    document.body.appendChild(div);
+    $('.comment').before(div);
     $('#docs-title').val(title);
+    $('.selected').append($('.comment'));
 }
 
 function setStyleUrl(element){
