@@ -67,11 +67,17 @@ function createHandler(xhr) {
     request = {
 	'method' : 'PUT',
 	'URI' : doc,
-	'body' : $('#selected').html(),
+	'body' : $('#selected').html()+getComment(),
 	'contentType' : 'text/html',
 	'onReadyHandler' : putHandler 
     }
     makeRequest(request);
+}
+
+function getComment(){
+    var comment = $('#why').val();
+    return "<b>Comment</b><br>"+comment;
+    
 }
     
 function putHandler(xhr) {

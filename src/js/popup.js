@@ -46,7 +46,7 @@ function dispSelection(text, title) {
     var div = document.createElement('div');
     div.setAttribute('class', 'selected');
     div.setAttribute('id', 'selected');
-    div.setAttribute('style','display:block');
+    div.setAttribute('style','display:block;font-size:0.8em;');
     div.innerHTML = text;
     var p = document.createElement('p');
     p.setAttribute('id','snip-content');
@@ -54,7 +54,6 @@ function dispSelection(text, title) {
     div.insertBefore(p, div.firstChild);
     $('.comment').before(div);
     $('#docs-title').val(title);
-    $('.selected').append($('.comment'));
 }
 
 function setStyleUrl(element){
@@ -82,14 +81,6 @@ function format_links(text) {
  **  publish date: 06/17/2012
  **  Version: 0.0.1
  **/
-/*chrome.tabs.getSelected (null, function(tab) {
-    chrome.tabs.sendRequest (tab.id, {method: "getSelection"}, function(response){
-	console.log(tab.id);
-	console.log(response);
-	dispSelection(response.data);
-    });
-});*/
-
 function getSelection () {
     chrome.tabs.getSelected (null, function(tab) {
 	chrome.tabs.sendRequest (tab.id, {method: "getSelection"}, function(response){
