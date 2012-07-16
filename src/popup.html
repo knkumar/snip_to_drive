@@ -14,16 +14,31 @@
   </head>
   <body>
     <!-- JavaScript and HTML must be in separate files for security. -->
-    <div class="snip-header" id="snip-header">
+    <div class="snip-header" id="snip-header" style="font-family: geneva, arial, helvetica, sans-serif; display:block; font-size: 0.9em;">
       <img src="icons/icon.png" alt="Snip Icon" height="28" width="28" />
-      Select content, Enter title, submit to google docs.
+      Select content, enter title, submit to google docs.
     </div>
     <hr>
     <div class="snip-drive-container" id="snip-drive-id">
-      <span > Snip Title </span>
+
       <form id="docs-create" name="docs-create" > 
-	<input class="text" name="docs-title" id="docs-title" type="text"> 
-	<input class="button" name="submit" value="Submit" type="submit"> 
+
+	<div > 
+	  <span style="font-family: geneva, arial, helvetica, sans-serif; font-size: 0.8em;"> 
+	    Snip Title
+	  </span>
+	  <input class="text" name="docs-title" id="docs-title" type="text"> 
+	</div>
+	
+	<div class="comment"> 
+	  <textarea class="text" name="why" id="why" rows="5" cols="50"></textarea>
+	  <span style="font-family: geneva, arial, helvetica, sans-serif; display:block; font-size: 0.8em;"> 
+	    Comment
+	  </span>
+	</div>
+	
+	<input class="button" name="submit" value="Snip" type="submit"> 
+      
       </form>	
     </div>
     
