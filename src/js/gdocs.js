@@ -68,7 +68,7 @@ function createHandler(xhr) {
 	'method' : 'PUT',
 	'URI' : doc,
 	'body' : $('#selected').html()+getComment(),
-	'contentType' : 'text/html',
+	'contentType' : 'multipart/related',
 	'onReadyHandler' : putHandler 
     }
     makeRequest(request);
@@ -76,16 +76,16 @@ function createHandler(xhr) {
 
 function getComment(){
     var comment = $('#why').val();
-    return "<b>Comment</b><br>"+comment;
+    return "<i>"+"<br><br><b>Comment</b><br>"+comment+"</i>";
     
 }
     
 function putHandler(xhr) {
     /*
-	  1. check if collection exists
+      1. check if collection exists
       2. else create collection
       3. move to collection
-	*/
+    */
     var items = xhr.responseXML.firstChild.childNodes;
     doc_uri = items[0].firstChild.data;
     addDocCollection();

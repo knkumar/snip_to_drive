@@ -1,7 +1,12 @@
+// Copyright (c) 2012 Kiran Kumar. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+
 /**
  **  This part hooks to google drive and makes the magic happen
- **  publish date: 06/17/2012
- **  Version: 0.0.1
+ **  publish date: 07/22/2012
+ **  Version: 2012.07.22
  **/
 var DOCLIST_SCOPE = 'https://docs.google.com/feeds';
 var DOCLIST_FEED = DOCLIST_SCOPE + '/default/private/full/';
@@ -10,7 +15,11 @@ if (localStorage['collection_id'] == undefined)
 	localStorage['collection_id'] = '';
 var collectionName = 'snipped_from_chrome';
 
-
+/**
+ **  Check if the collection "snipped_from_chrome" exists in google docs
+ **  publish date: 07/22/2012
+ **  Version: 2012.07.22
+ **/
 function checkCollectionExists() {
     if( localStorage['collection_id'] == '') {
 	request = {
@@ -23,6 +32,12 @@ function checkCollectionExists() {
     }
 }
 
+
+/**
+ **  Handler for checkCollection
+ **  publish date: 07/22/2012
+ **  Version: 2012.07.22
+ **/
 function checkCollectionHandler(xhr){
     var doc = xhr.responseText;
     var parser = new DOMParser();
@@ -36,6 +51,11 @@ function checkCollectionHandler(xhr){
     
 }
 
+/**
+ **  Create the collection "snipped_from_chrome" - a good way to organize the snips
+ **  publish date: 07/22/2012
+ **  Version: 2012.07.22
+ **/
 function createCollection(docId){
     createCollectionHandler
     var atom = createAtom('folder',collectionName);
@@ -49,6 +69,11 @@ function createCollection(docId){
     makeRequest(request);
 }
 
+/**
+ **  Handler for CreateCollection
+ **  publish date: 07/22/2012
+ **  Version: 2012.07.22
+ **/
 function createCollectionHandler(xhr){
     localStorage['collection_id'] = xhr.getResponseHeader('location');
 }

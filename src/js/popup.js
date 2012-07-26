@@ -5,12 +5,11 @@
 
 $(document).ready(getSelection);
 google.authorize(checkAuthorized);
-//getSelection();
 
 /**
  **  The callback for authorize - fetches the resumable media link and checks for the collection "snipped from chrome"
- **  publish date: 07/05/2012
- **  Version: 0.0.2
+ **  publish date: 07/22/2012
+ **  Version: 2012.07.22
  **/
 function checkAuthorized() {
 	// on form submit handler    
@@ -27,8 +26,8 @@ function checkAuthorized() {
 /**
  **  gets the url for page from chrome.tabs.getSelected
  **  called_by: disp_selection
- **  publish date: 07/05/2012
- **  Version: 0.0.2
+ **  publish date: 07/22/2012
+ **  Version: 2012.07.22
  **/
 function getURL(callback) {
     chrome.tabs.getSelected(null, function(tab) {
@@ -37,7 +36,7 @@ function getURL(callback) {
 }
 
 /**
- **	 Function creates the child with the selected text in popup.html
+ **  Function creates the child with the selected text in popup.html
  **  called_by: get_selection
  **  publish date: 06/17/2012
  **  Version: 0.0.1
@@ -47,7 +46,7 @@ function dispSelection(text, title) {
     div.setAttribute('class', 'selected');
     div.setAttribute('id', 'selected');
     div.setAttribute('style','display:block;font-size:0.8em;');
-    div.innerHTML = text;
+    div.innerHTML = text; //format_links(url,text)
     var p = document.createElement('p');
     p.setAttribute('id','snip-content');
     p = setStyleUrl(p);
@@ -56,6 +55,12 @@ function dispSelection(text, title) {
     $('#docs-title').val(title);
 }
 
+/**
+ **  Function sets the style lements for the url and content
+ **  called_by: dispSelection
+ **  publish date: 06/17/2012
+ **  Version: 2012.07.22
+ **/
 function setStyleUrl(element){
     element.style.backgroundColor = "gainsboro";
     element.style.padding = "10px";
@@ -70,16 +75,24 @@ function setStyleUrl(element){
     return element;
 }
 
-function format_links(text) {
+/**
+ **  Function sets the style lements for the url and content
+ **  called_by: 
+ **  publish date: 06/17/2012
+ **  Version: 2012.07.22
+ **/
 
+function format_links(url, text) {
+    // get all a elemets and update the href attribute by making it absolute
+    $(a)
 }
 
 
 /**
  **  Function gets the selected text from chrome.tabs in background.html
  **  called_by: document.ready
- **  publish date: 06/17/2012
- **  Version: 0.0.1
+ **  publish date: 07/22/2012
+ **  Version: 2012.07.22
  **/
 function getSelection () {
     chrome.tabs.getSelected (null, function(tab) {

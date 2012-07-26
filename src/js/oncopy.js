@@ -6,11 +6,20 @@
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
     if (request.method == "getSelection") {
 	var select = getSelectionHTML();
-	sendResponse({ urlData: select });
+	var cssStyle = getCSS();
+	sendResponse({ urlData: select, css: cssStyle });
     }
     else
 	sendResponse({});
 });
+
+
+function getCSS(){
+    var css;
+    var active = document.activeElement;
+    // this should get all the style elements that 
+    css = window.getComputedStyle(active);
+}
 
 function getSelectionHTML() {
     var userSelection;
@@ -26,14 +35,16 @@ function getSelectionHTML() {
 	    range.setEnd(userSelection.anchorNode, userSelection.anchorOffset);
             range.setStart(userSelection.focusNode, userSelection.focusOffset);
 	}
-        var clonedSelection = range.cloneContents ();
+        var clonedSelection = range.cloneContents();
         var div = document.createElement ('div');
         div.appendChild (clonedSelection);
         return div.innerHTML;
-    } else if (document.getSelection) {
+    }
+    else if (document.getSelection) {
         userSelection = document.getSelection();
 	return userSelection;
-    }  
+    } 
+
     else if (document.selection) {
         // Explorer selection, return the HTML
         userSelection = document.selection.createRange ();
@@ -42,5 +53,3 @@ function getSelectionHTML() {
         return 'failed';
     }
 }
-
-

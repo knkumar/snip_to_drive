@@ -1,3 +1,14 @@
+// Copyright (c) 2012 Kiran Kumar. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+/**
+ **  The makeRequest wrapper takes a request object which has 
+ **  Content-Type, method, body, and onReadyHandler and issues 
+ **  a xmlHttpRequest to the URI
+ **  publish date: 07/22/2012
+ **  Version: 2012.07.22
+ **/
 function makeRequest(request) {
     // Make an XHR that creates the task
     var xhr = new XMLHttpRequest();
@@ -30,14 +41,23 @@ function makeRequest(request) {
 	xhr.send();
 }
 
-    
+
+/**
+ **  Displays an error if the request failed from the handler function
+ **  publish date: 07/22/2012
+ **  Version: 2012.07.22
+ **/    
 function dispError() {
     $('#snip-drive-id').attr('style','display:none');
     $('#selected').attr('style','display:none');
     $('#failure').attr('style','display:block');    
 }
 
-
+/**
+ **  Create the body for request from the atom and the content under "#snip-content"
+ **  publish date: 07/22/2012
+ **  Version: 2012.07.22
+ **/
 function createBody (atom){
     var body = ['--END_OF_PART\r\n',
 		'Content-Type: application/atom+xml;\r\n\r\n',
@@ -48,6 +68,11 @@ function createBody (atom){
 		'--END_OF_PART--\r\n'].join('');
 }
 
+/**
+ **  Create the atom xml element to transmit from the category and title
+ **  publish date: 07/22/2012
+ **  Version: 2012.07.22
+ **/
 function createAtom (category, titleDoc) {
 
     var atom = ["<?xml version='1.0' encoding='UTF-8'?>", 
