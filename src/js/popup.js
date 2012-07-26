@@ -46,13 +46,19 @@ function dispSelection(text, title) {
     div.setAttribute('class', 'selected');
     div.setAttribute('id', 'selected');
     div.setAttribute('style','display:block;font-size:0.8em;');
-    div.innerHTML = text; //format_links(url,text)
+    div.innerHTML = text; 
     var p = document.createElement('p');
     p.setAttribute('id','snip-content');
     p = setStyleUrl(p);
     div.insertBefore(p, div.firstChild);
     $('.comment').before(div);
     $('#docs-title').val(title);
+    getURL( function(URL) 
+	    {
+		format_links(URL);
+	    });    
+
+
 }
 
 /**
@@ -78,13 +84,24 @@ function setStyleUrl(element){
 /**
  **  Function sets the style lements for the url and content
  **  called_by: 
- **  publish date: 06/17/2012
- **  Version: 2012.07.22
+ **  publish date: 07/26/2012
+ **  Version: 2012.07.26
  **/
 
-function format_links(url, text) {
+function format_links(url) {
     // get all a elemets and update the href attribute by making it absolute
-    $(a)
+    console.log("url::"+url);
+    $('#selected > a').attr('href', 
+	      function(index, href){
+		  var uri = new URI(href);
+		  return uri.absoluteTo(url); // returns a new URI instance
+	      });
+    $('#selected > img').attr('src', 
+	      function(index, src){
+		  var uri = new URI(src);
+		  return uri.absoluteTo(url); // returns a new URI instance
+	      });
+
 }
 
 
